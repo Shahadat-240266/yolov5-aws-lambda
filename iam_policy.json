@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadInputImages",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::yolov5-detection-mshossain/input-images/*"
+    },
+    {
+      "Sid": "WriteDetectionResults",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::yolov5-detection-mshossain/detection-results/*"
+    },
+    {
+      "Sid": "WriteDetectionRecords",
+      "Effect": "Allow",
+      "Action": "dynamodb:PutItem",
+      "Resource": "arn:aws:dynamodb:us-east-1:<ACCOUNT_ID>:table/DetectionResults"
+    },
+    {
+      "Sid": "DetectLabels",
+      "Effect": "Allow",
+      "Action": "rekognition:DetectLabels",
+      "Resource": "*"
+    }
+  ]
+}
